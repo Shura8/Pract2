@@ -17,24 +17,26 @@ def SumNum (num):
     return sum
 
 year = int(input("Введите год для подсчета числа: "))
+while int(year) < 0:
+    year = int(input("Введите год больше 0: "))
 i = 1
-res = 0
+result = 0
 for i in range (1,8):
     if i % 2 == 0:
         if i == 2:
-            if year % 4 == 0:
-                res += SumNum(month29)
+            if year % 4 == 0 and (year // 100) % 4 == 0:
+                result += SumNum(month29)
             else:
-                res += SumNum(month28)
+                result += SumNum(month28)
         else:
-            res += SumNum(month30)
+            result += SumNum(month30)
     else:
-        res += SumNum(month31)
+        result += SumNum(month31)
     i += 1
 for i in range (8, 13):
     if i % 2 == 0:
-        res += SumNum(month31)
+        result += SumNum(month31)
     else:
-        res += SumNum(month30)
+        result += SumNum(month30)
     i += 1
-print("Сумма: ", res)
+print("Сумма: ", result)
